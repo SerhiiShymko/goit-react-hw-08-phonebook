@@ -23,3 +23,4 @@ const logOut createAsyncThunk('auth/login', async credentials => {
         return data;
     } catch (error) {}
 })
+
