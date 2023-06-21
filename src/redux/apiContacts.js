@@ -6,5 +6,5 @@ const url = axios.create({
 
 export const apiContacts = async () => {
   const { data } = await url.get('/');
-  return data;
+   return data;
 };
