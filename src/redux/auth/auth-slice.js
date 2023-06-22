@@ -10,22 +10,37 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  extraReducers: {
-    [authOperations.register.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.isLoggedIn = true;
-    },
-    [authOperations.logIn.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.isLoggedIn = true;
-    },
-    [authOperations.logOut.fulfilled](state, action) {
-      state.user = { name: null, email: null };
-      state.token = null;
-      state.isLoggedIn = false;
-    },
+  extraReducers: builder => {
+    builder
+      .addMatcher(
+        userApi.endpoints.login.matchFulfilled,
+        (state, { payload }) => {
+          state.token = payload.token;
+          state.isLoggedIn = true;
+          state.user = payload.user;
+        }
+      )
+      .addMatcher(
+        userApi.endpoints.register.matchFulfilled,
+        (state, { payload }) => {
+          state.token = payload.token;
+          state.isLoggedIn = true;
+          state.user = payload.user;
+        }
+      )
+      .addMatcher(userApi.endpoints.logOut.matchFulfilled, (state, _) => {
+        state.token = null;
+        state.isLoggedIn = false;
+        state.user = null;
+      })
+      .addMatcher(
+        userApi.endpoints.getCurrent.matchFulfilled,
+        (state, { payload }) => {
+          state.user.name = payload.name;
+          state.user.email = payload.email;
+          state.isLoggedIn = true;
+        }
+      );
   },
 });
 

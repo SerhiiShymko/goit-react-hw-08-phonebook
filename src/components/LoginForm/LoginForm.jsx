@@ -43,7 +43,7 @@ const LoginForm = () => {
           />
         </label>
         <button className={css.button}>
-          {isLoading && <ProgressBar />}
+          {/* {isLoading && <ProgressBar />} */}
           Log In
         </button>
       </form>
