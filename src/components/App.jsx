@@ -1,12 +1,12 @@
 // import css from './App.module.css';
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import AppBar from './AppBar/AppBar';
+// import AppBar from './AppBar/AppBar';
 import { ProgressBar } from 'react-loader-spinner';
 import { Toaster } from 'react-hot-toast';
-import { useSelector } from 'react-redux';
-import { getToken } from 'redux/auth/auth-selectors';
-import { setToken } from 'redux/auth/auth-operations';
+// import { useSelector } from 'react-redux';
+// import { getToken } from 'redux/auth/auth-selectors';
+// import { setToken } from 'redux/auth/auth-operations';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));

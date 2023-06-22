@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import css from './LoginForm.module.css';
-import { ProgressBar } from 'react-loader-spinner';
+// import { ProgressBar } from 'react-loader-spinner';
 
 const LoginForm = () => {
   const [password, setPassword] = useState('');
