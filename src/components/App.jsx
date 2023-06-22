@@ -21,9 +21,9 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="/contacts" element={ContactsPage} redirectTo="/" />
-        <Route path="/login" element={LoginPage} redirectTo="/" />
-        <Route path="/register" element={RegisterPage} redirectTo="/" />
+        <Route path="/contacts" element={ContactsPage} to="/" />
+        <Route path="/login" element={LoginPage} to="/" />
+        <Route path="/register" element={RegisterPage} to="/" />
       </Route>
       <Route path="*" element={<HomePage />} />
     </Routes>
