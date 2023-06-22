@@ -8,7 +8,7 @@ export const setToken = token => {
   instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
 
-export const signUp = async body => {
+export const register = async body => {
   return await instance.post('/users', body);
 };
 

@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import css from './RegisterForm.module.css';
-import { ProgressBar } from 'react-loader-spinner';
+// import { ProgressBar } from 'react-loader-spinner';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { signUp } from 'redux/auth/auth-operations';
-import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
+import { register } from 'redux/auth/auth-operations';
+// import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 
 const RegisterForm = () => {
   const [name, setName] = useState('');
@@ -23,7 +23,7 @@ const RegisterForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    signUp({
+    register({
       email,
       password,
       name,
