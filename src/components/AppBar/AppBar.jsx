@@ -6,7 +6,8 @@ import { useSelector } from 'react-redux';
 import Navigation from 'components/Navigation/Navigation';
 
 const AppBar = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isLoggedIn = useSelector(state => selectIsLoggedIn(state));
 
   return (
     <div>

@@ -6,7 +6,7 @@
 const HomePage = () => {
   // const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  return <>HomePage</>;
+  return <>home</>;
 };
 
 export default HomePage;
