@@ -5,7 +5,7 @@ import AuthNav from 'components/AuthNav/AuthNav';
 import { useSelector } from 'react-redux';
 import Navigation from 'components/Navigation/Navigation';
 
-const AppBar = () => {
+export const AppBar = () => {
   // const isLoggedIn = useSelector(selectIsLoggedIn);
   const isLoggedIn = useSelector(state => selectIsLoggedIn(state));
 
@@ -18,5 +18,3 @@ const AppBar = () => {
     </div>
   );
 };
-
-export default AppBar;

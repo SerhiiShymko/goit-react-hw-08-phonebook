@@ -1,37 +1,34 @@
-// import { useSelector } from 'react-redux';
-// import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
+
+// import { AppBar } from 'components/AppBar/AppBar';
 
 // import AppBar from 'components/AppBar/AppBar';
 
 const HomePage = () => {
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  return <>home</>;
+  return isLoggedIn ? (
+    <div>
+      {/* <div>Welcome to PhoneBook, {user.name}!</div> */}
+      <div>Welcome to PhoneBook, user!</div>
+      <h2>
+        To create your contact, click <Link to="contacts">here</Link>
+      </h2>
+    </div>
+  ) : (
+    <div>
+      <div>Welcome to PhoneBook!</div>
+      <h2>
+        First time there? <Link to="register">Sign Up</Link>
+      </h2>
+
+      <h2>
+        Already have account? <Link to="login">Sign in</Link>
+      </h2>
+    </div>
+  );
 };
 
 export default HomePage;
-
-// return (
-//   <>
-//     <AppBar />
-
-//     <Suspense fallback={<Loader />}>
-//       {!isRefreshing && (
-//         <Routes>
-//           <Route path="/" element={<HomePage />} />
-//           <Route path="/contacts/*" element={<ContactsPage />} />
-//           <Route path="/contacts/add" element={<AddContactPage />} />
-//           <Route
-//             path="/contacts/edit/:contactId"
-//             element={<ChangeContactPage />}
-//           />
-//           <Route path="/register" element={<RegisterPage />} />
-//           <Route path="/login" element={<LoginPage />} />
-//           <Route path="*" element={<NotFound />} />
-//         </Routes>
-//       )}
-//     </Suspense>
-
-//     <Footer />
-//   </>
-// );

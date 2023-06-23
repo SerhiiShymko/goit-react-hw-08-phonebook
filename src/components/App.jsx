@@ -1,7 +1,7 @@
 // import css from './App.module.css';
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import AppBar from './AppBar/AppBar';
+import { AppBar } from './AppBar/AppBar';
 import { ProgressBar } from 'react-loader-spinner';
 import { Toaster } from 'react-hot-toast';
 // import { useSelector } from 'react-redux';

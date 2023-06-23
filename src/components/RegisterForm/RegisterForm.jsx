@@ -4,6 +4,8 @@ import css from './RegisterForm.module.css';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { register } from 'redux/auth/auth-operations';
+// import authOperations from 'redux/auth/auth-operations';
+
 // import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 
 const RegisterForm = () => {
