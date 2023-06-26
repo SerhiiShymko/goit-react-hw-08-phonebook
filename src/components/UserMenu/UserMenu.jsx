@@ -6,11 +6,11 @@ const UserMenu = () => {
   const name = useSelector(selectUserName);
 
   return (
-    <div className={css.container}>
-      <p>
+    <div className={css.UserMenu}>
+      <p className={css.userMenu__text}>
         Welcome bro, <span>{name}</span>!
       </p>
-      <button className={css.button} type="button">
+      <button className={css.UserMenu__button} type="button">
         Log out
       </button>
     </div>

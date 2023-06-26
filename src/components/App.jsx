@@ -1,12 +1,9 @@
 // import css from './App.module.css';
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { AppBar } from './AppBar/AppBar';
 import { ProgressBar } from 'react-loader-spinner';
 import { Toaster } from 'react-hot-toast';
-// import { useSelector } from 'react-redux';
-// import { getToken } from 'redux/auth/auth-selectors';
-// import { setToken } from 'redux/auth/auth-operations';
+import { Layout } from './Layout/Layout';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
@@ -24,17 +21,19 @@ export const App = () => {
   return (
     <>
       <Toaster />
-      <AppBar />
+
       {/* {isLoading ? (
         <ProgressBar />
       ) : ( */}
       <Suspense fallback={<ProgressBar />}>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/contacts" element={ContactsPage} redirectTo="/" />
-          <Route path="/login" element={LoginPage} redirectTo="/" />
-          <Route path="/register" element={RegisterPage} redirectTo="/" />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="/contacts" element={<ContactsPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
         </Routes>
       </Suspense>
       {/* )} */}

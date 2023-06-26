@@ -37,7 +37,7 @@ const RegisterForm = () => {
 
   return (
     <div>
-      {' '}
+      {/* {' '} */}
       <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
         <label className={css.label}>
           Username

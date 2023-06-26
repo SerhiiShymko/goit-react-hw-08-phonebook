@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-
 import css from '../AppBar/AppBar.module.css';
 
 const AuthNav = () => (
