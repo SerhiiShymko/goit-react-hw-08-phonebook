@@ -16,16 +16,24 @@ const HomePage = () => {
       </h2>
     </div>
   ) : (
-    <div>
-      <div className={css.wrapper}>Welcome to PhoneBook!</div>
-      <h2>
-        First time there? <Link to="register">Sign Up</Link>
-      </h2>
+    <div className={css.bg}>
+      <img src={bg} alt="Phone book" className={css.backgroundImage} />
+      <div className={css.wrapper}>
+        <h1>Welcome to PhoneBook!</h1>
+        <h2>
+          First time there?
+          <Link to="register" className={css.link}>
+            Sign Up
+          </Link>
+        </h2>
 
-      <h2>
-        Already have account? <Link to="login">Sign in</Link>
-      </h2>
-      <img src={bg} alt="Phone book" />
+        <h2>
+          Already have account?
+          <Link to="login" className={css.link}>
+            Sign in
+          </Link>
+        </h2>
+      </div>
     </div>
   );
 };

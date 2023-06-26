@@ -8,7 +8,7 @@
   border-bottom: 1px solid #2a363b;
 }
 .link:global(.active) {
-  color: rgb(255 241 0);
+  color: #fff100;
 }
 .link {
   display: inline-block;
@@ -21,8 +21,8 @@
   border: none;
   cursor: pointer;
   transition: all 0.3s ease 0s;
-  color: rgb(255, 255, 255);
-  background-color: rgb(132, 149, 223);
+  color: #ffffff;
+  background-color: #8495df;
 }
 .link:not(:last-child) {
   margin-right: 20px;
