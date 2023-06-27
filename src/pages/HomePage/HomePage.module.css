@@ -49,6 +49,6 @@ h2 {
 }
 
 .link:is(:hover, :focus) {
-  background-color: #28ab28;
+  background-color: #677ee2;
   box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
 }

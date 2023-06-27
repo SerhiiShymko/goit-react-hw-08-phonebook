@@ -1,43 +1,26 @@
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import css from './RegisterForm.module.css';
 // import { ProgressBar } from 'react-loader-spinner';
-import { useState } from 'react';
-import { toast } from 'react-hot-toast';
 import { register } from 'redux/auth/auth-operations';
-// import authOperations from 'redux/auth/auth-operations';
-
-// import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
+import { useDispatch } from 'react-redux';
 
 const RegisterForm = () => {
-  const [name, setName] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
-
-  const navigate = useNavigate();
-
-  const handleChange = ({ target: { name, value } }) => {
-    name === 'email'
-      ? setEmail(value)
-      : name === 'name'
-      ? setName(value)
-      : setPassword(value);
-  };
+  const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
-    register({
-      email,
-      password,
-      name,
-    }).then(() => {
-      toast.success('Register successfully');
-      navigate('/login');
-    });
+    const form = e.currentTarget;
+    const formData = {
+      name: form.elements.name.value,
+      email: form.elements.email.value,
+      password: form.elements.password.value,
+    };
+    dispatch(register(formData));
+    form.reset();
   };
 
   return (
     <div>
-      {/* {' '} */}
       <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
         <label className={css.label}>
           Username
@@ -47,8 +30,6 @@ const RegisterForm = () => {
             name="name"
             placeholder="Username"
             required
-            onChange={handleChange}
-            value={name}
           />
         </label>
         <label className={css.label}>
@@ -59,8 +40,6 @@ const RegisterForm = () => {
             name="email"
             placeholder="Email"
             required
-            onChange={handleChange}
-            value={email}
           />
         </label>
         <label className={css.label}>
@@ -71,8 +50,6 @@ const RegisterForm = () => {
             name="password"
             placeholder="Password"
             required
-            onChange={handleChange}
-            value={password}
           />
         </label>
         <label className={css.label}>
@@ -85,8 +62,7 @@ const RegisterForm = () => {
             required
           />
         </label>
-        <button className={css.btn} type="submit">
-          {/* {selectIsLoggedIn && <ProgressBar />} */}
+        <button className={css.button} type="submit">
           Register
         </button>
       </form>

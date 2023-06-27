@@ -1,9 +1,12 @@
 // import css from './App.module.css';
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ProgressBar } from 'react-loader-spinner';
 import { Toaster } from 'react-hot-toast';
 import { Layout } from './Layout/Layout';
+import { selectIsRefreshing } from 'redux/auth/auth-selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { refreshUser } from 'redux/auth/auth-operations';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
@@ -12,31 +15,31 @@ const ContactsPage = lazy(() => import('pages/ContactsPage/ContactsPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
-  // const token = useSelector(getToken);
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
 
-  // const { isLoading } = setToken(undefined, {
-  //   skip: !token,
-  // });
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return (
     <>
       <Toaster />
-
-      {/* {isLoading ? (
+      {isRefreshing ? (
         <ProgressBar />
-      ) : ( */}
-      <Suspense fallback={<ProgressBar />}>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage />} />
-            <Route path="/contacts" element={<ContactsPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
-      </Suspense>
-      {/* )} */}
+      ) : (
+        <Suspense fallback={<ProgressBar />}>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<HomePage />} />
+              <Route path="/contacts" element={<ContactsPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      )}
     </>
   );
 };

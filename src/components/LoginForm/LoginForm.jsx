@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import css from './LoginForm.module.css';
-// import { ProgressBar } from 'react-loader-spinner';
+import { logIn } from 'redux/auth/auth-operations';
 
 const LoginForm = () => {
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
-
-  const handleChange = ({ target: { name, value } }) => {
-    name === 'email' ? setEmail(value) : setPassword(value);
-  };
+  const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(email, password);
+    const form = e.currentTarget;
+    const formData = {
+      email: form.elements.email.value,
+      password: form.elements.password.value,
+    };
+    dispatch(logIn(formData));
+    form.reset();
   };
 
   return (
@@ -26,8 +27,6 @@ const LoginForm = () => {
             name="email"
             placeholder="Email"
             required
-            onChange={handleChange}
-            value={email}
           />
         </label>
         <label className={css.label}>
@@ -38,14 +37,9 @@ const LoginForm = () => {
             name="password"
             placeholder="Password"
             required
-            onChange={handleChange}
-            value={password}
           />
         </label>
-        <button className={css.button}>
-          {/* {isLoading && <ProgressBar />} */}
-          Log In
-        </button>
+        <button className={css.button}>Log In</button>
       </form>
     </div>
   );
