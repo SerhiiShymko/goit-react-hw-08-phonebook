@@ -10,7 +10,7 @@ const HomePage = () => {
 
   return isLoggedIn ? (
     <div className={css.wrapper}>
-      <h1>Welcome to PhoneBook, {user.name}!</h1>
+      <h1>Welcome to PhoneBook, {user}!</h1>
       <h2>
         To create your contact, click <Link to="contacts">here</Link>
       </h2>

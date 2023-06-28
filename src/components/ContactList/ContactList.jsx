@@ -19,7 +19,7 @@ export const ContactList = () => {
           <li className={css.item} key={contact.id}>
             <Contact
               name={contact.name}
-              number={contact.phone}
+              number={contact.number}
               onDeleteContact={onDeleteContact}
               contactId={contact.id}
             />
