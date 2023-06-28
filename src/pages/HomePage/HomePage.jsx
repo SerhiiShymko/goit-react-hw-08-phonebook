@@ -9,11 +9,17 @@ const HomePage = () => {
   const user = useSelector(selectUserName);
 
   return isLoggedIn ? (
-    <div className={css.wrapper}>
-      <h1>Welcome to PhoneBook, {user}!</h1>
-      <h2>
-        To create your contact, click <Link to="contacts">here</Link>
-      </h2>
+    <div>
+      <img src={bg} alt="Phone book" className={css.backgroundImage} />
+      <div className={css.wrapper}>
+        <h1>Welcome to PhoneBook, {user}!</h1>
+        <h2>
+          To create your contact, click{' '}
+          <Link className={css.link} to="contacts">
+            here
+          </Link>
+        </h2>
+      </div>
     </div>
   ) : (
     <div className={css.bg}>

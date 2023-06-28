@@ -7,13 +7,20 @@ import {
   selectError,
   selectIsLoading,
 } from 'redux/contacts/contacts-selectors';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import css from './ContactsPage.module.css';
+import { useEffect } from 'react';
+import { fetchContacts } from 'redux/contacts/contacts-operations';
 
 const ContactsPage = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const contacts = useSelector(selectContacts);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
     <div className={css.wrapper}>
