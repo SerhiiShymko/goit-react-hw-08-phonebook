@@ -3,6 +3,8 @@ import css from './RegisterForm.module.css';
 // import { ProgressBar } from 'react-loader-spinner';
 import { register } from 'redux/auth/auth-operations';
 import { useDispatch } from 'react-redux';
+// import { useState } from 'react';
+import { toast } from 'react-hot-toast';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -16,6 +18,17 @@ const RegisterForm = () => {
       password: form.elements.password.value,
     };
     dispatch(register(formData));
+
+    // if (formData.password !== formData.confirmPassword) {
+    //   toast.error('Passwords do not match');
+    //   return;
+    // }
+
+    if (formData.password.length < 8) {
+      toast.error('Password must be at least 8 characters long');
+      return;
+    }
+
     form.reset();
   };
 
